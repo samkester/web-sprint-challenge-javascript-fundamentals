@@ -17,8 +17,27 @@ function myFunction() {
 myFunction();
 
 // Explanation: 
-
+// Because it is declared inside of myFunction, nestedFunction is in myFunction's scope and can access other items in that scope.
+// Technically this isn't closure, because nestedFunction is being invoked while also in myFunction's scope. If it were passed out of that scope (such as by being returned) JS would create a closure to allow it to continue accessing internal no matter where it was invoked.
 
 /* Task 2: Counter */
 
 /* Create a function called `summation` that accepts a parameter and uses a counter to return the summation of that number. For example, `summation(4)` should return 10 because 1+2+3+4 is 10. */
+const summation = num => {
+  if(num <= 0) return 0;
+  return num + summation(num - 1);
+};
+
+console.log(summation(4));
+
+// I wasn't entirely sure what this question was after, so on my TL's advice, this is another approach using a counter to manually add up the summation
+
+const summationTwo = (() => {
+  let counter = 0;
+  return int => counter += int;
+})();
+
+console.log(summationTwo(1));
+console.log(summationTwo(2));
+console.log(summationTwo(3));
+console.log(summationTwo(4));
