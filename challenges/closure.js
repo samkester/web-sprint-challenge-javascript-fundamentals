@@ -29,3 +29,15 @@ const summation = num => {
 };
 
 console.log(summation(4));
+
+// I wasn't entirely sure what this question was after, so on my TL's advice, this is another approach using a counter to manually add up the summation
+
+const summationTwo = (() => {
+  let counter = 0;
+  return int => counter += int;
+})();
+
+console.log(summationTwo(1));
+console.log(summationTwo(2));
+console.log(summationTwo(3));
+console.log(summationTwo(4));
